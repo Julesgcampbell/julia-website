@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FORCE NAVBAR TO STAY ABSOLUTE */
+div[ref] {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 9999 !important;
+  width: 100% !important;
+  transform: translateZ(0) !important;
+}
+
+/* Prevent any movement */
+div[ref] * {
+  transform: none !important;
+}
+
+/* Ensure hero section has no white background */
+section {
+  background: transparent !important;
+}
+
+/* Image Permanence Protection - Targeted Only */
+img {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* Prevent any image from being hidden */
+img[style*="display: none"],
+img[style*="display:none"],
+img[style*="opacity: 0"],
+img[style*="opacity:0"],
+img[style*="visibility: hidden"],
+img[style*="visibility:hidden"] {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Prevent browser from optimizing away specific elements */
+.category-card,
+.photo-item,
+.elegant-hover {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Flower symbol animations */
+@keyframes flower-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+    opacity: 0.4;
+  }
+}
+
+.flower-symbol {
+  animation: flower-float 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.flower-float {
+  animation: flower-float 3s ease-in-out infinite;
+}
